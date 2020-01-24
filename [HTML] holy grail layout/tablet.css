@@ -1,0 +1,7 @@
+.nav-view {
+  flex-basis: 20%;
+}
+
+.side-view {
+  display: none;
+}

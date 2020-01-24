@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+/* body */
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+.head-view {
+  width: 100%;
+    border-bottom: 1px solid black;
+}
+
+/* content(section) */
+.content {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* content nav */
+.nav-view {
+  flex-basis: 15%;
+  flex-shrink: 0;
+    border-right: 1px solid black;
+}
+
+/*content article */
+.main-view {
+  display: flex;
+  flex-grow: 1;
+  overflow: auto;
+  /* overflow 크롬 작동 x */
+}
+
+/*content aside */
+.side-view {
+  flex-basis: 25%;
+  flex-shrink: 0;
+    border-left: 1px solid black;
+}
+
+/* footer */
+.foot-view {
+  width: 100%;
+  text-align: right;
+  border-top: 1px solid black;
+}
