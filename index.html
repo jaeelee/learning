@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="ko" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프론트엔드 개발자 포트폴리오</title>
+    <meta
+      name="description"
+      content="React와 React Native 기반 프로젝트 경험을 보유한 프론트엔드 개발자의 포트폴리오"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #f8f7f4;
+        --surface: #ffffff;
+        --border: #e5e2dc;
+        --text-primary: #1a1916;
+        --text-muted: #6b6860;
+        --accent: #3d6b5e;
+        --accent-light: #eaf2ef;
+        --accent-strong: #2c4f45;
+      }
+
+      body {
+        font-family: "Noto Sans KR", "Inter", sans-serif;
+        background-color: var(--bg);
+        color: var(--text-primary);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(1.5rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes blink {
+        0%,
+        49% {
+          opacity: 1;
+        }
+        50%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(1.5rem);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal:nth-child(1) {
+        transition-delay: 0ms;
+      }
+      .reveal:nth-child(2) {
+        transition-delay: 100ms;
+      }
+      .reveal:nth-child(3) {
+        transition-delay: 200ms;
+      }
+      .reveal:nth-child(4) {
+        transition-delay: 300ms;
+      }
+      .reveal:nth-child(5) {
+        transition-delay: 400ms;
+      }
+      .reveal:nth-child(6) {
+        transition-delay: 500ms;
+      }
+
+      .section-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .kpi {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        background-color: var(--accent);
+        color: white;
+        font-size: 0.75rem;
+        font-weight: bold;
+        border-radius: 4px;
+        margin: 0 0.25rem;
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link.active {
+        color: var(--accent);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 2px;
+      }
+
+      .hero-gradient {
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(61, 107, 94, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 30%,
+            rgba(170, 174, 160, 0.08) 0%,
+            transparent 50%
+          );
+      }
+
+      .skill-badge {
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .skill-badge:hover {
+        background-color: var(--accent) !important;
+        color: white !important;
+        transform: scale(1.08);
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -9px;
+        top: 4px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        border: 4px solid var(--bg);
+      }
+
+      .experience-card {
+        position: relative;
+        padding-left: 2.5rem;
+      }
+
+      .experience-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--border);
+        transition: background-color 0.3s ease;
+      }
+
+      .experience-card:hover::before {
+        background-color: var(--accent);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed top-0 w-full z-50 backdrop-blur-sm bg-white/80 border-b transition-shadow"
+      style="border-color: var(--border)"
+    >
+      <div
+        class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between"
+      >
+        <span class="font-bold text-base" style="color: var(--accent)"
+          >Frontend Developer</span
+        >
+
+        <!-- Desktop menu -->
+        <ul
+          class="hidden md:flex gap-8 text-sm"
+          style="color: var(--text-muted)"
+        >
+          <li>
+            <a href="#about" class="nav-link" style="color: inherit">About</a>
+          </li>
+          <li>
+            <a href="#skills" class="nav-link" style="color: inherit">Skills</a>
+          </li>
+          <li>
+            <a href="#experience" class="nav-link" style="color: inherit"
+              >Experience</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="nav-link" style="color: inherit"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-2xl"
+          style="color: var(--accent)"
+        >
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile dropdown menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden max-h-0 overflow-hidden transition-all duration-300 border-t"
+        style="border-color: var(--border)"
+      >
+        <div
+          class="flex flex-col gap-0 px-6 py-4"
+          style="background-color: var(--surface)"
+        >
+          <a
+            href="#about"
+            class="py-2 hover:text-accent transition-colors"
+            style="color: var(--text-muted)"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="py-2 hover:text-accent transition-colors"
+            style="color: var(--text-muted)"
+            >Skills</a
+          >
+          <a
+            href="#experience"
+            class="py-2 hover:text-accent transition-colors"
+            style="color: var(--text-muted)"
+            >Experience</a
+          >
+          <a
+            href="#contact"
+            class="py-2 hover:text-accent transition-colors"
+            style="color: var(--text-muted)"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="min-h-screen flex flex-col justify-center px-6 pt-14 relative overflow-hidden hero-gradient"
+    >
+      <div class="max-w-4xl mx-auto w-full">
+        <p
+          class="reveal text-sm tracking-[0.2em] uppercase mb-4"
+          style="color: var(--accent)"
+        >
+          Frontend Developer
+        </p>
+        <h1
+          class="reveal text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-6"
+        >
+          Frontend<span style="color: var(--accent)">.</span>
+        </h1>
+        <p
+          class="reveal text-lg md:text-xl leading-relaxed mb-10 max-w-2xl"
+          style="color: var(--text-muted)"
+        >
+          사용자 경험을 중심으로 한 인터페이스 개발과 효율적인 상태 관리에
+          경험이 있는 프론트엔드 개발자입니다.<br />
+          코드의 유지보수성을 중시하며, 팀과 협력하여 문제를 해결하는 것을
+          중요하게 생각합니다.
+        </p>
+        <div class="reveal flex gap-4 flex-wrap">
+          <a
+            href="#experience"
+            class="px-6 py-3 rounded-full text-sm font-medium transition-colors hover:opacity-90"
+            style="background-color: var(--accent); color: white"
+          >
+            경력 보기
+          </a>
+          <a
+            href="#contact"
+            class="px-6 py-3 rounded-full text-sm font-medium transition-colors"
+            style="border: 1.5px solid var(--accent); color: var(--accent)"
+            onmouseenter="this.style.backgroundColor = 'var(--accent-light)'"
+            onmouseleave="this.style.backgroundColor = 'transparent'"
+          >
+            연락하기
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+        style="color: var(--text-muted)"
+      >
+        ↓
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <p class="section-label reveal">About</p>
+        <h2 class="reveal text-3xl md:text-4xl font-semibold mb-12">
+          개발 철학
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="reveal p-6 rounded-2xl border transition-all hover:-translate-y-1"
+            style="
+              background-color: var(--surface);
+              border-color: var(--border);
+            "
+          >
+            <div class="text-3xl mb-3">⚖️</div>
+            <h3 class="font-semibold mb-2">예측 가능성 우선</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-muted)">
+              과도한 설계보다 예측 가능성과 수정 용이성을 우선하는 의사결정
+            </p>
+          </div>
+
+          <div
+            class="reveal p-6 rounded-2xl border transition-all hover:-translate-y-1"
+            style="
+              background-color: var(--surface);
+              border-color: var(--border);
+            "
+          >
+            <div class="text-3xl mb-3">🎯</div>
+            <h3 class="font-semibold mb-2">변경 비용 최소화</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-muted)">
+              변경 비용과 장애 가능성을 낮추는 방향으로 기술적 의사결정을 진행
+            </p>
+          </div>
+
+          <div
+            class="reveal p-6 rounded-2xl border transition-all hover:-translate-y-1"
+            style="
+              background-color: var(--surface);
+              border-color: var(--border);
+            "
+          >
+            <div class="text-3xl mb-3">📈</div>
+            <h3 class="font-semibold mb-2">지속 가능한 구조</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--text-muted)">
+              서비스가 장기적으로 진화할 수 있는 구조를 만드는 것을 개발
+              원칙으로 삼음
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section
+      id="skills"
+      class="py-24 px-6"
+      style="background-color: var(--surface)"
+    >
+      <div class="max-w-4xl mx-auto">
+        <p class="section-label reveal">Skills</p>
+        <h2 class="reveal text-3xl md:text-4xl font-semibold mb-12">
+          기술 스택
+        </h2>
+
+        <div class="space-y-10">
+          <!-- Core -->
+          <div class="reveal">
+            <p
+              class="text-xs tracking-widest uppercase font-medium mb-4"
+              style="color: var(--text-muted)"
+            >
+              Core
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >React</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >React Native</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >TypeScript</span
+              >
+            </div>
+          </div>
+
+          <!-- State & Data -->
+          <div class="reveal">
+            <p
+              class="text-xs tracking-widest uppercase font-medium mb-4"
+              style="color: var(--text-muted)"
+            >
+              State & Data
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >Recoil</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >Redux</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >React Query</span
+              >
+            </div>
+          </div>
+
+          <!-- Styling -->
+          <div class="reveal">
+            <p
+              class="text-xs tracking-widest uppercase font-medium mb-4"
+              style="color: var(--text-muted)"
+            >
+              Styling
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >Styled Components</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >MUI</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >Tailwind CSS</span
+              >
+            </div>
+          </div>
+
+          <!-- Utilities -->
+          <div class="reveal">
+            <p
+              class="text-xs tracking-widest uppercase font-medium mb-4"
+              style="color: var(--text-muted)"
+            >
+              Utilities
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >Axios</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >React Hook Form</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >AG Grid</span
+              >
+            </div>
+          </div>
+
+          <!-- Tooling -->
+          <div class="reveal">
+            <p
+              class="text-xs tracking-widest uppercase font-medium mb-4"
+              style="color: var(--text-muted)"
+            >
+              Tooling
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >Husky</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >lint-staged</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >ESLint</span
+              >
+            </div>
+          </div>
+
+          <!-- Earlier Experience -->
+          <div class="reveal">
+            <p
+              class="text-xs tracking-widest uppercase font-medium mb-4"
+              style="color: var(--text-muted)"
+            >
+              Earlier
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="background-color: #f0ede8; color: #8b8680"
+                >Java</span
+              >
+              <span
+                class="skill-badge px-4 py-2 rounded-full text-sm font-medium cursor-default"
+                style="background-color: #f0ede8; color: #8b8680"
+                >C/C++</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <p class="section-label reveal">Experience</p>
+        <h2 class="reveal text-3xl md:text-4xl font-semibold mb-16">
+          경력 및 프로젝트
+        </h2>
+
+        <div
+          class="relative border-l-2 ml-3 space-y-16"
+          style="border-color: var(--border)"
+        >
+          <!-- A회사 -->
+          <div class="reveal experience-card">
+            <div class="timeline-dot"></div>
+
+            <div class="flex flex-wrap items-baseline gap-3 mb-1">
+              <h3 class="text-xl font-bold">A회사</h3>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-medium"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >계약직</span
+              >
+            </div>
+            <p class="text-sm mb-4" style="color: var(--text-muted)">
+              2025.09 – 2026.02 · 모바일 금융 플랫폼
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >React</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >TypeScript</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >Recoil</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >React Query</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >MUI</span
+              >
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold mb-2">
+                  ▸ 데이터 처리 기능 개발 및 최적화
+                </p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >클라이언트-서버 간 데이터 동기화 로직 개선으로 안정성
+                      강화</span
+                    >
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>처리 속도 <span class="kpi">약 25% 개선</span></span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2">▸ UI 컴포넌트 시스템 개발</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >재사용 가능한 컴포넌트 라이브러리 구축으로 개발 효율
+                      향상</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2">▸ 코드 표준화 및 검사 자동화</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >코드 리뷰 자동화를 통해 버그 사전 방지
+                      <span class="kpi">20% 감소</span></span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- B회사 -->
+          <div class="reveal experience-card">
+            <div class="timeline-dot"></div>
+
+            <div class="flex flex-wrap items-baseline gap-3 mb-1">
+              <h3 class="text-xl font-bold">B회사</h3>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-medium"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >정규직</span
+              >
+            </div>
+            <p class="text-sm mb-4" style="color: var(--text-muted)">
+              2023.11 – 2024.09 · 모바일 애플리케이션 플랫폼
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >React Native</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >TypeScript</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >Redux</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >React Query</span
+              >
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold mb-2">▸ 모바일 앱 전면 개편</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>빌드 환경 구조 정립으로 배포 프로세스 개선</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>팀 온보딩 시간 단축</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2">
+                  ▸ 네트워크 요청 라이브러리 개발
+                </p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >플랫폼 간 공통 사용 가능한 HTTP 클라이언트 라이브러리
+                      구현</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2">▸ 추천 알고리즘 로직 최적화</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>단계별 상태 관리로 복잡도 개선</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2">▸ 데이터 수집 안정성 강화</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >안정적인 데이터 수집 인프라 구축으로 신뢰성
+                      <span class="kpi">99%</span> 달성</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- C회사 -->
+          <div class="reveal experience-card">
+            <div class="timeline-dot"></div>
+
+            <div class="flex flex-wrap items-baseline gap-3 mb-1">
+              <h3 class="text-xl font-bold">C회사</h3>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-medium"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >정규직</span
+              >
+            </div>
+            <p class="text-sm mb-4" style="color: var(--text-muted)">
+              2022.12 – 2023.05 · 웹 플랫폼 서비스
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >React</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >TypeScript</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >Zotai</span
+              >
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold mb-2">▸ 사용자 활동 이력 시스템 설계</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >다양한 사용자 활동을 통합된 시간 축 기반으로 관리</span
+                    >
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>변경 데이터 선택 저장으로 저장소 효율성 개선</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2">▸ 모달 UI 성능 최적화</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >렌더링 지연 문제 해결 및 부드러운 상호작용 구현</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- D회사 -->
+          <div class="reveal experience-card">
+            <div class="timeline-dot"></div>
+
+            <div class="flex flex-wrap items-baseline gap-3 mb-1">
+              <h3 class="text-xl font-bold">D회사</h3>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-medium"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >계약직</span
+              >
+            </div>
+            <p class="text-sm mb-4" style="color: var(--text-muted)">
+              2022.07 – 2022.11 · 웹 서비스 개발사
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >React</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >TypeScript</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >Styled Components</span
+              >
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold mb-2">
+                  ▸ 웹 애플리케이션 프론트엔드 개발
+                </p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >프로젝트 초기 설계부터 컴포넌트 아키텍처 구성까지
+                      담당</span
+                    >
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>반응형 인터페이스 구현 및 API 통합</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- E회사 -->
+          <div class="reveal experience-card">
+            <div class="timeline-dot"></div>
+
+            <div class="flex flex-wrap items-baseline gap-3 mb-1">
+              <h3 class="text-xl font-bold">E회사</h3>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full font-medium"
+                style="
+                  background-color: var(--accent-light);
+                  color: var(--accent);
+                "
+                >인턴</span
+              >
+            </div>
+            <p class="text-sm mb-4" style="color: var(--text-muted)">
+              2021.11 – 2022.01 · 보안 솔루션 개발 회사
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >Java</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >C/C++</span
+              >
+              <span
+                class="text-xs px-2 py-1 rounded border"
+                style="
+                  background-color: var(--bg);
+                  color: var(--text-muted);
+                  border-color: var(--border);
+                "
+                >Android NDK</span
+              >
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <p class="font-semibold mb-2">▸ 보안 기능 개발</p>
+                <ul
+                  class="space-y-1.5 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span>모바일 앱 무결성 검사 로직 구현</span>
+                  </li>
+                  <li class="flex gap-2">
+                    <span class="mt-0.5" style="color: var(--accent)">—</span
+                    ><span
+                      >검사 정확도 <span class="kpi">99.5%</span> 달성</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education & Certifications -->
+        <div class="mt-20">
+          <p class="section-label reveal">Education</p>
+          <h2 class="reveal text-2xl md:text-3xl font-semibold mb-8">
+            학력 및 자격
+          </h2>
+
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div
+              class="reveal p-6 rounded-2xl border transition-all hover:-translate-y-1"
+              style="
+                background-color: var(--surface);
+                border-color: var(--border);
+              "
+            >
+              <p class="font-semibold text-sm mb-2">국내 4년제 대학교</p>
+              <p class="text-sm" style="color: var(--text-muted)">
+                컴퓨터공학 관련 학과
+              </p>
+              <p class="text-xs mt-2" style="color: var(--text-muted)">
+                2013 – 2017
+              </p>
+            </div>
+
+            <div
+              class="reveal p-6 rounded-2xl border transition-all hover:-translate-y-1"
+              style="
+                background-color: var(--surface);
+                border-color: var(--border);
+              "
+            >
+              <p class="font-semibold text-sm mb-2">정보처리기사</p>
+              <p class="text-sm" style="color: var(--text-muted)">국가자격증</p>
+              <p class="text-xs mt-2" style="color: var(--text-muted)">
+                2017.05
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-24 px-6"
+      style="background-color: var(--surface)"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="section-label reveal mx-auto">Contact</p>
+        <h2 class="reveal text-3xl md:text-4xl font-semibold mb-4">
+          함께 일해요
+        </h2>
+        <p
+          class="reveal text-base leading-relaxed mb-10 max-w-md mx-auto"
+          style="color: var(--text-muted)"
+        >
+          새로운 기회나 협업 제안을 환영합니다.
+        </p>
+
+        <div class="reveal flex justify-center gap-4 flex-wrap">
+          <a
+            href="mailto:hello@example.com"
+            class="px-8 py-3 rounded-full font-medium transition-all hover:opacity-90"
+            style="background-color: var(--accent); color: white"
+          >
+            이메일 보내기
+          </a>
+          <a
+            href="https://github.com/sampledev"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-3 rounded-full font-medium transition-all border-2"
+            style="border-color: var(--accent); color: var(--accent)"
+            onmouseenter="this.style.backgroundColor = 'var(--accent-light)'"
+            onmouseleave="this.style.backgroundColor = 'transparent'"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="py-8 px-6 text-center text-xs border-t"
+      style="color: var(--text-muted); border-color: var(--border)"
+    >
+      <p>© 2026 Frontend Developer · Designed & Built with care</p>
+    </footer>
+
+    <script>
+      // Intersection Observer for scroll reveal animations
+      const revealElements = document.querySelectorAll(".reveal");
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      revealElements.forEach((el) => observer.observe(el));
+
+      // Active navigation link tracking
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section[id]");
+
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+              navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      sections.forEach((section) => sectionObserver.observe(section));
+
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen =
+          mobileMenu.style.maxHeight !== "0px" &&
+          mobileMenu.style.maxHeight !== "";
+        mobileMenu.style.maxHeight = isOpen ? "0px" : "100vh";
+      });
+
+      // Close mobile menu when a link is clicked
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.style.maxHeight = "0px";
+        });
+      });
+
+      // Smooth scroll behavior for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
