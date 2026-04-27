@@ -7,10 +7,11 @@ function App() {
   const [exchange, setExchange] = useState({ krw: 0, usd: 0 });
 
   const handleChange = (e) => {
+    const value = Number(e.target.value);
     if (e.target.name === "krw") {
-      setExchange({ krw: e.target.value, usd: e.target.value / EXCHANGE_RATE });
+      setExchange({ krw: value, usd: value / EXCHANGE_RATE });
     } else if (e.target.name === "usd") {
-      setExchange({ krw: e.target.value * EXCHANGE_RATE, usd: e.target.value });
+      setExchange({ krw: value * EXCHANGE_RATE, usd: value });
     }
   };
 
