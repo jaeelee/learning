@@ -26,6 +26,8 @@ export default function ContactEditor() {
       return;
     }
     onCreate(name, contact);
+    setName("");
+    setContact("");
   };
 
   const onKeyDown = (e) => {
