@@ -1,33 +1,28 @@
 import { useContext, useRef, useState } from "react";
 import "./ContactEditor.css";
-import { ContactDispachContext } from "../App";
+import { ContactDispatchContext } from "../App";
 
 export default function ContactEditor() {
-  const { onCreate } = useContext(ContactDispachContext);
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
+  const { onCreate } = useContext(ContactDispatchContext);
+  const [contactInfo, setContactInfo] = useState({ name: "", contact: "" });
   const nameInputRef = useRef(null);
   const contactInputRef = useRef(null);
 
-  const onChangeName = (e) => {
-    setName(e.target.value);
-  };
-
-  const onChangeContact = (e) => {
-    setContact(e.target.value);
+  const onChange = (e) => {
+    console.log(e.target.name, e.target.value, contactInfo);
+    setContactInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const onSubmit = () => {
-    if (name === "") {
+    if (contactInfo.name === "") {
       nameInputRef.current.focus();
       return;
-    } else if (contact === "") {
+    } else if (contactInfo.contact === "") {
       contactInputRef.current.focus();
       return;
     }
-    onCreate(name, contact);
-    setName("");
-    setContact("");
+    onCreate(contactInfo.name, contactInfo.contact);
+    setContactInfo({ name: "", contact: "" });
   };
 
   const onKeyDown = (e) => {
@@ -39,18 +34,20 @@ export default function ContactEditor() {
       <div className="title">Add Contact</div>
       <div className="input_wrapper">
         <input
+          name="name"
           ref={nameInputRef}
-          value={name}
-          onChange={onChangeName}
+          value={contactInfo.name}
+          onChange={onChange}
           onKeyDown={onKeyDown}
           className="name"
           placeholder="이름 ..."
           required
         />
         <input
+          name="contact"
           ref={contactInputRef}
-          value={contact}
-          onChange={onChangeContact}
+          value={contactInfo.contact}
+          onChange={onChange}
           onKeyDown={onKeyDown}
           className="contact"
           placeholder="연락처(이메일) ..."

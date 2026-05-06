@@ -1,9 +1,9 @@
 import { memo, useContext } from "react";
 import "./ContactItem.css";
-import { ContactDispachContext } from "../App";
+import { ContactDispatchContext } from "../App";
 
 const ContactItem = ({ id, name, contact }) => {
-  const { onDelete } = useContext(ContactDispachContext);
+  const { onDelete } = useContext(ContactDispatchContext);
 
   return (
     <div className="ContactItem">

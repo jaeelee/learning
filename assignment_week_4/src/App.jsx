@@ -4,7 +4,7 @@ import ContactEditor from "./components/ContactEditor";
 import ContactList from "./components/ContactList";
 
 export const ContactStateContext = createContext();
-export const ContactDispachContext = createContext();
+export const ContactDispatchContext = createContext();
 
 function reducer(state, action) {
   switch (action.type) {
@@ -42,14 +42,14 @@ function App() {
     <div className="App">
       <h2>Contact List</h2>
       <ContactStateContext.Provider value={data}>
-        <ContactDispachContext.Provider value={memoizedDispatch}>
+        <ContactDispatchContext.Provider value={memoizedDispatch}>
           <section>
             <ContactEditor />
           </section>
           <section>
             <ContactList />
           </section>
-        </ContactDispachContext.Provider>
+        </ContactDispatchContext.Provider>
       </ContactStateContext.Provider>
     </div>
   );
