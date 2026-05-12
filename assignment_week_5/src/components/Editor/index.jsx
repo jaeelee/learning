@@ -15,7 +15,7 @@ const Editor = ({ onSubmit, data }) => {
   const nav = useNavigate();
   const [newData, setNewData] = useState(
     data
-      ? data
+      ? { ...data, createdDate: getFormatedDate(new Date(data?.createdDate)) }
       : {
           priceType: PRICE_TYPE_EXPENSE,
           category: CATEGORY[0].value,
@@ -25,6 +25,7 @@ const Editor = ({ onSubmit, data }) => {
         },
   );
   const inputRef = useRef({});
+  console.log("editor", data);
 
   const onSave = () => {
     const emptyField = Object.keys(newData).find((key) => {

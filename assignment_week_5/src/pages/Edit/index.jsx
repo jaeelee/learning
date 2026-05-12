@@ -17,7 +17,7 @@ const Edit = () => {
     <div>
       <Header title="기록 수정하기" />
       <Editor
-        data={data.find((item) => item.id === params.id)}
+        data={data.find((item) => String(item.id) === String(params.id))}
         onSubmit={onSubmit}
       />
     </div>
