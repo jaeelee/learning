@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {
+  CATEGORY,
   PRICE_TYPE_EXPENSE,
   PRICE_TYPE_INCOME,
   TYPE_NEGAVITE,
@@ -17,7 +18,7 @@ const Editor = ({ onSubmit, data }) => {
       ? data
       : {
           priceType: PRICE_TYPE_EXPENSE,
-          category: "🍚식비",
+          category: CATEGORY[0].value,
           content: "",
           price: "",
           createdDate: getFormatedDate(new Date()),
@@ -91,10 +92,11 @@ const Editor = ({ onSubmit, data }) => {
           value={newData.category}
           onChange={onChange}
         >
-          <option value={"🍚식비"}>🍚식비</option>
-          <option value={"🏢급여"}>🏢급여</option>
-          <option value={"🏠생활"}>🏠생활</option>
-          <option value={"💵저축"}>💵저축</option>
+          {CATEGORY.map((item, index) => (
+            <option key={index} value={item.value}>
+              {item.label}
+            </option>
+          ))}
         </select>
       </section>
       <section>

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { getFormatedDate } from "../../util/date";
 import Button from "../Button";
 import "./ListItem.css";
-import { PRICE_TYPE_INCOME } from "../../constants/constants";
+import { CATEGORY, PRICE_TYPE_INCOME } from "../../constants/constants";
 import { useContext } from "react";
 import { AccountDispatchContext } from "../../App";
 
@@ -17,7 +17,9 @@ const ListItem = ({ id, category, content, price, priceType, createdDate }) => {
   return (
     <div className="ListItem">
       <div className="wrapper">
-        <div className="category">{category}</div>
+        <div className="category">
+          {CATEGORY.find((item) => item.value === category).label}
+        </div>
         <div className="content">{content}</div>
       </div>
       <div className="wrapper">
