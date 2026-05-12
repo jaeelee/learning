@@ -34,13 +34,6 @@ function reducer(state, action) {
   return nextState;
 }
 
-//  interface Account{
-//    id: number,
-//    createdDate: Date,
-//    emotionId: Number,
-//    content: text,
-//  }
-
 export const AccountStateContext = createContext();
 export const AccountDispatchContext = createContext();
 
