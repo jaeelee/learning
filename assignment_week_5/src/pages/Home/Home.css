@@ -1,0 +1,11 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+.Home .list_section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

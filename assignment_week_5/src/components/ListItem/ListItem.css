@@ -1,0 +1,73 @@
+.ListItem {
+  background-color: #1f213a;
+  border-radius: 5px;
+  padding: 22px 20px;
+  justify-content: space-between;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ListItem .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ListItem .category {
+  max-width: 100px;
+}
+
+.ListItem .content {
+  width: 180;
+  font-size: 16px;
+}
+
+.ListItem .price {
+  font-size: 18px;
+  font-weight: bold;
+  flex: 1;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.ListItem .date {
+  width: 100px;
+  word-break: keep-all;
+  color: gray;
+}
+
+.ListItem .category {
+  background-color: #141625;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: gray;
+}
+
+.ListItem .price_income {
+  color: #26e4a6;
+}
+
+.ListItem .price_expense {
+  color: #ff2222;
+}
+
+.ListItem .button_wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.ListItem .edit_button,
+.delete_button {
+  width: 50px;
+  font-size: 14px;
+  text-align: right;
+  background-color: #141625;
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}

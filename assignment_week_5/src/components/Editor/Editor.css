@@ -1,0 +1,29 @@
+.Editor {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.Editor input,
+select {
+  background-color: #1f213a;
+  width: 100%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+.Editor input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* 아이콘 색 반전 → 흰색처럼 보이게 */
+}
+
+.Editor .button_wrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
