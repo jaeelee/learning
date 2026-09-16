@@ -1,0 +1,11 @@
+{
+  "include": ["src/**/*"], // 빌드할 파일 경로, 컴파일 할 파일을 지정
+  "compilerOptions": { // 
+    "target": "ES6", // 빌드할 타겟 버전,
+    "module": "ESNext", // 모듈 시스템,
+    "outDir": "dist", // 빌드 결과물 저장 경로
+    "strict": true, // 엄격한 모드,
+    "rootDir": "src", // 빌드 시 소스 파일 경로
+    "moduleDetection": "force", // 모듈 감지 방식 -> 파일 내부를 독립적인 모듈로 감지
+    }
+}
